@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301202326) do
+ActiveRecord::Schema.define(:version => 20120301222754) do
 
   create_table "competitions", :force => true do |t|
     t.integer  "user_id"
@@ -44,6 +44,35 @@ ActiveRecord::Schema.define(:version => 20120301202326) do
   end
 
   add_index "competitions", ["user_id"], :name => "index_competitions_on_user_id"
+
+  create_table "entries", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "competition_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.boolean  "has_event_333"
+    t.boolean  "has_event_444"
+    t.boolean  "has_event_555"
+    t.boolean  "has_event_222"
+    t.boolean  "has_event_333bf"
+    t.boolean  "has_event_333oh"
+    t.boolean  "has_event_333fm"
+    t.boolean  "has_event_333ft"
+    t.boolean  "has_event_minx"
+    t.boolean  "has_event_pyram"
+    t.boolean  "has_event_sq1"
+    t.boolean  "has_event_clock"
+    t.boolean  "has_event_666"
+    t.boolean  "has_event_777"
+    t.boolean  "has_event_magic"
+    t.boolean  "has_event_mmagic"
+    t.boolean  "has_event_444bf"
+    t.boolean  "has_event_555bf"
+    t.boolean  "has_event_333mbf"
+  end
+
+  add_index "entries", ["competition_id"], :name => "index_entries_on_competition_id"
+  add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

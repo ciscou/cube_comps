@@ -1,0 +1,22 @@
+<%= form_for [@competition, @entry], :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Entry</legend>
+
+    <div class="control-group">
+      <%= f.label "has_events", "Events", :class => 'control-label' %>
+      <div class="controls">
+        <% Event.all.each do |event| %>
+          <label class="checkbox">
+            <%= f.check_box "has_event_#{event.code}", :class => 'check_box' %>
+            <%= event.name %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', @championship, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
