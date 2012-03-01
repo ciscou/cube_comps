@@ -41,10 +41,10 @@
       <%= f.label "has_events", "Events", :class => 'control-label' %>
       <div class="controls">
         <% Event.all.each do |event| %>
-          <label class="checkbox">
+          <%= f.label "has_event_#{event.code}", :class => 'checkbox' do %>
             <%= f.check_box "has_event_#{event.code}", :class => 'check_box' %>
             <%= event.name %>
-          </label>
+          <% end %>
         <% end %>
       </div>
     </div>
