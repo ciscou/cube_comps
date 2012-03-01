@@ -1,0 +1,72 @@
+<h1>Result</h1>
+
+<p>
+  <b>Competition</b><br>
+  <%= @result.competition_id %>
+</p>
+
+<p>
+  <b>User</b><br>
+  <%= @result.user_id %>
+</p>
+
+<p>
+  <b>Event</b><br>
+  <%= @result.event %>
+</p>
+
+<p>
+  <b>Round</b><br>
+  <%= @result.round %>
+</p>
+
+<p>
+  <b>Group</b><br>
+  <%= @result.group %>
+</p>
+
+<p>
+  <b>Time1</b><br>
+  <%= @result.time1 %>
+</p>
+
+<p>
+  <b>Time2</b><br>
+  <%= @result.time2 %>
+</p>
+
+<p>
+  <b>Time3</b><br>
+  <%= @result.time3 %>
+</p>
+
+<p>
+  <b>Time4</b><br>
+  <%= @result.time4 %>
+</p>
+
+<p>
+  <b>Time5</b><br>
+  <%= @result.time5 %>
+</p>
+
+<p>
+  <b>Average</b><br>
+  <%= @result.average %>
+</p>
+
+<p>
+  <b>Best</b><br>
+  <%= @result.best %>
+</p>
+
+<p>
+  <b>Worst</b><br>
+  <%= @result.worst %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', results_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_result_path(@result), :class => 'btn' %>
+  <%= link_to 'Delete', result_path(@result), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

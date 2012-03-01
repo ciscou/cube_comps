@@ -1,0 +1,29 @@
+<h1>Results</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Competitor</th>
+      <th>Time #1</th>
+      <th>Time #2</th>
+      <th>Time #3</th>
+      <th>Time #4</th>
+      <th>Time #5</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.user.email %></td>
+        <td><%= format_time result.time1 %></td>
+        <td><%= format_time result.time2 %></td>
+        <td><%= format_time result.time3 %></td>
+        <td><%= format_time result.time4 %></td>
+        <td><%= format_time result.time5 %></td>
+        <td><%= format_time result.average %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_result_path, :class => 'btn btn-primary' %>
