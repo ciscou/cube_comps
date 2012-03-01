@@ -1,33 +1,26 @@
-<h1>Listing competitions</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Name</th>
-    <th>City</th>
-    <th>Address</th>
-    <th>Start on</th>
-    <th>End on</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @competitions.each do |competition| %>
-  <tr>
-    <td><%= competition.user %></td>
-    <td><%= competition.name %></td>
-    <td><%= competition.city %></td>
-    <td><%= competition.address %></td>
-    <td><%= competition.start_on %></td>
-    <td><%= competition.end_on %></td>
-    <td><%= link_to 'Show', competition %></td>
-    <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-    <td><%= link_to 'Destroy', competition, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Competitions</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @competitions.each do |competition| %>
+      <tr>
+        <td><%= competition.id %></td>
+        <td><%= link_to competition.user_id, competition_path(competition) %></td>
+        <td><%= competition.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_competition_path(competition), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', competition_path(competition), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Competition', new_competition_path %>
+<%= link_to 'New', new_competition_path, :class => 'btn btn-primary' %>

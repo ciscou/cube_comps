@@ -1,41 +1,52 @@
-<%= form_for(@competition) do |f| %>
-  <% if @competition.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+<%= form_for @competition, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Competition</legend>
 
-      <ul>
-      <% @competition.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="control-group">
+      <%= f.label :user_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :user_id, :class => 'number_field' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :start_on %><br />
-    <%= f.date_select :start_on %>
-  </div>
-  <div class="field">
-    <%= f.label :end_on %><br />
-    <%= f.date_select :end_on %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="control-group">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :city, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :city, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :address, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :address, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :start_on, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :start_on, :class => 'date_select' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :end_on, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :end_on, :class => 'date_select' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', competitions_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

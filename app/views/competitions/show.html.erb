@@ -1,35 +1,37 @@
-<p id="notice"><%= notice %></p>
+<h1>Competition</h1>
 
 <p>
-  <b>User:</b>
-  <%= @competition.user %>
+  <b>User</b><br>
+  <%= @competition.user_id %>
 </p>
 
 <p>
-  <b>Name:</b>
+  <b>Name</b><br>
   <%= @competition.name %>
 </p>
 
 <p>
-  <b>City:</b>
+  <b>City</b><br>
   <%= @competition.city %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b>Address</b><br>
   <%= @competition.address %>
 </p>
 
 <p>
-  <b>Start on:</b>
+  <b>Start on</b><br>
   <%= @competition.start_on %>
 </p>
 
 <p>
-  <b>End on:</b>
+  <b>End on</b><br>
   <%= @competition.end_on %>
 </p>
 
-
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+<div class="form-actions">
+  <%= link_to 'Back', competitions_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_competition_path(@competition), :class => 'btn' %>
+  <%= link_to 'Delete', competition_path(@competition), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
