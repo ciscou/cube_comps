@@ -2,7 +2,7 @@ CubeComps::Application.routes.draw do
   devise_for :users
 
   resources :competitions do
-    resources :entries, :only => [:new, :create]
+    resources :entries, :only => [:new, :create, :edit, :update]
   end
 
   root :to => "competitions#index"

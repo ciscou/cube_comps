@@ -20,6 +20,14 @@
   <%= @competition.address %>
 </p>
 
+<p>
+  <% if user_signed_in? && (entry = current_user.entries.by_competition(@competition).first) %>
+    <%= link_to "Edit your entry in this competition", edit_competition_entry_path(@competition, entry) %>
+  <% else %>
+    <%= link_to "Enter this competition", new_competition_entry_path(@competition) %>
+  <% end %>
+</p>
+
 <div class="form-actions">
   <%= link_to 'Back', competitions_path, :class => 'btn'  %>
   <%= link_to 'Edit', edit_competition_path(@competition), :class => 'btn' %>

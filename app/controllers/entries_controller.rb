@@ -2,31 +2,25 @@ class EntriesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :load_competition
 
-  # GET /entries/new
-  # GET /entries/new.json
+  respond_to :html
+
   def new
     @entry = current_user.entries.new(:competition => @competition)
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @entry }
-    end
   end
 
-  # POST /entries
-  # POST /entries.json
-  def create
-    @entry = current_user.entries.new(params[:entry].merge(:competition => @competition))
+  def edit
+    @entry = current_user.entries.find(params[:id])
+  end
 
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to @competition, notice: 'Entry was successfully created.' }
-        format.json { render json: @entry, status: :created, location: @entry }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
-    end
+  def create
+    @entry = current_user.entries.create(params[:entry].merge(:competition => @competition))
+    respond_with @entry, :location => @competition
+  end
+
+  def update
+    @entry = current_user.entries.find(params[:id])
+    @entry.update_attributes(params[:entry])
+    respond_with @entry, :location => @competition
   end
 
   private
