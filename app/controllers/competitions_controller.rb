@@ -1,4 +1,6 @@
 class CompetitionsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /competitions
   # GET /competitions.json
   def index
@@ -24,7 +26,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions/new
   # GET /competitions/new.json
   def new
-    @competition = Competition.new
+    @competition = current_user.competitions.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +36,13 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions/1/edit
   def edit
-    @competition = Competition.find(params[:id])
+    @competition = current_user.competitions.find(params[:id])
   end
 
   # POST /competitions
   # POST /competitions.json
   def create
-    @competition = Competition.new(params[:competition])
+    @competition = current_user.competitions.new(params[:competition])
 
     respond_to do |format|
       if @competition.save
@@ -56,7 +58,7 @@ class CompetitionsController < ApplicationController
   # PUT /competitions/1
   # PUT /competitions/1.json
   def update
-    @competition = Competition.find(params[:id])
+    @competition = current_user.competitions.find(params[:id])
 
     respond_to do |format|
       if @competition.update_attributes(params[:competition])
@@ -72,7 +74,7 @@ class CompetitionsController < ApplicationController
   # DELETE /competitions/1
   # DELETE /competitions/1.json
   def destroy
-    @competition = Competition.find(params[:id])
+    @competition = current_user.competitions.find(params[:id])
     @competition.destroy
 
     respond_to do |format|
