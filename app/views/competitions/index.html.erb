@@ -2,18 +2,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>User</th>
-      <th>Created at</th>
+      <th>Dates</th>
+      <th>Name</th>
+      <th>City</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @competitions.each do |competition| %>
       <tr>
-        <td><%= competition.id %></td>
-        <td><%= link_to competition.user_id, competition_path(competition) %></td>
-        <td><%= competition.created_at %></td>
+        <td><%= format_date_range competition %></td>
+        <td><%= link_to competition.name, competition %></td>
+        <td><%= competition.city %></td>
         <td>
           <%= link_to 'Edit', edit_competition_path(competition), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', competition_path(competition), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>

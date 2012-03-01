@@ -1,6 +1,11 @@
 <h1>Competition</h1>
 
 <p>
+  <b>Date</b><br>
+  <%= format_date_range @competition %>
+</p>
+
+<p>
   <b>Name</b><br>
   <%= @competition.name %>
 </p>
@@ -13,16 +18,6 @@
 <p>
   <b>Address</b><br>
   <%= @competition.address %>
-</p>
-
-<p>
-  <b>Start on</b><br>
-  <%= @competition.start_on %>
-</p>
-
-<p>
-  <b>End on</b><br>
-  <%= @competition.end_on %>
 </p>
 
 <div class="form-actions">
