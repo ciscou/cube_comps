@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :competition do
-    name     { Faker::Lorem.sentence }
+    name     { Faker::Lorem.words(3).join(" ") }
     city     { Faker::Address.city }
     address  { Faker::Address.street_address }
     start_on { 30.days.ago.to_date + rand(60).days }
