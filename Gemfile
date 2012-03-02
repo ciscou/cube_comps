@@ -7,6 +7,8 @@ gem 'rails', '3.2.2'
 
 gem 'sqlite3'
 gem 'devise'
+gem 'factory_girl_rails'
+gem 'ffaker'
 
 # Gems used only for assets and not required
 # in production environments by default.
