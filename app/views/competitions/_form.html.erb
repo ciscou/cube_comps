@@ -38,12 +38,12 @@
     </div>
 
     <div class="control-group">
-      <%= f.label "has_events", "Events", :class => 'control-label' %>
+      <%= f.label "has_categories", "Categories", :class => 'control-label' %>
       <div class="controls">
-        <% Event.all.each do |event| %>
-          <%= f.label "has_event_#{event.code}", :class => 'checkbox' do %>
-            <%= f.check_box "has_event_#{event.code}", :class => 'check_box' %>
-            <%= event.name %>
+        <% Category.all.each do |category| %>
+          <%= f.label "has_category_#{category.code}", :class => 'checkbox' do %>
+            <%= f.check_box "has_category_#{category.code}", :class => 'check_box' %>
+            <%= category.name %>
           <% end %>
         <% end %>
       </div>

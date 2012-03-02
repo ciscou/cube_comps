@@ -1,5 +1,5 @@
-class Event
-  EVENTS = {
+class Category
+  CATEGORIES = {
     "333"    => "Rubik's Cube",
     "444"    => "4x4 Cube",
     "555"    => "5x5 Cube",
@@ -26,12 +26,12 @@ class Event
   end
 
   def self.all
-    EVENTS.keys.map { |code| Event.new(code) }
+    CATEGORIES.keys.map { |code| Category.new(code) }
   end
 
   attr_reader :code
 
   def name
-    EVENTS[@code]
+    CATEGORIES[@code]
   end
 end

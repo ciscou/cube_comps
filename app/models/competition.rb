@@ -3,13 +3,13 @@ class Competition < ActiveRecord::Base
 
   default_scope order(:start_on).reverse_order
 
-  def events
-    Event.all.select { |e| has_event? e }
+  def categories
+    Category.all.select { |c| has_category? c }
   end
 
   private
 
-  def has_event?(event)
-    send("has_event_#{event.respond_to?(:code) ? event.code : event}?")
+  def has_category?(category)
+    send("has_category_#{category.respond_to?(:code) ? category.code : category}?")
   end
 end
