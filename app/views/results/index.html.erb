@@ -8,6 +8,8 @@
       <th>Time #3</th>
       <th>Time #4</th>
       <th>Time #5</th>
+      <th>Best</th>
+      <th>Worst</th>
       <th>Average</th>
       <th>Actions</th>
     </tr>
@@ -21,6 +23,8 @@
         <td class="time"><%= format_time result.time3 %></td>
         <td class="time"><%= format_time result.time4 %></td>
         <td class="time"><%= format_time result.time5 %></td>
+        <td class="time"><%= format_time result.best %></td>
+        <td class="time"><%= format_time result.worst %></td>
         <td class="time"><%= format_time result.average %></td>
         <td>
           <%= link_to 'Edit', edit_event_result_path(@event, result), :class => 'btn btn-mini' %>
