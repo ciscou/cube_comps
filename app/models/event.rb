@@ -10,8 +10,8 @@ class Event < ActiveRecord::Base
   def create_results_for_first_round!
     competition.entries.with_category(category_code).each do |entry|
       results.create! :user_id => entry.user_id,
-                            :round   => 1,
-                            :group   => 1
+                      :round   => 1,
+                      :group   => 1
     end
   end
 end
