@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   def current_competition
     @competition if @competition.try(:persisted?)
   end
+  helper_method :current_competition
 end
