@@ -4,6 +4,9 @@ CubeComps::Application.routes.draw do
   resources :competitions do
     resources :entries, :only => [:new, :create, :edit, :update]
     resources :events
+  end
+
+  resources :events do
     resources :results
   end
 

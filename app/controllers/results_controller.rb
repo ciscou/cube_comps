@@ -1,8 +1,11 @@
 class ResultsController < ApplicationController
+  before_filter :load_event
+  before_filter :load_competition
+
   # GET /results
   # GET /results.json
   def index
-    @results = Result.all
+    @results = @event.results.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +47,7 @@ class ResultsController < ApplicationController
 
     respond_to do |format|
       if @result.save
-        format.html { redirect_to @result, notice: 'Result was successfully created.' }
+        format.html { redirect_to [@event, @result], notice: 'Result was successfully created.' }
         format.json { render json: @result, status: :created, location: @result }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class ResultsController < ApplicationController
 
     respond_to do |format|
       if @result.update_attributes(params[:result])
-        format.html { redirect_to @result, notice: 'Result was successfully updated.' }
+        format.html { redirect_to [@event, @result], notice: 'Result was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +79,18 @@ class ResultsController < ApplicationController
     @result.destroy
 
     respond_to do |format|
-      format.html { redirect_to results_url }
+      format.html { redirect_to event_results_url(@events) }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def load_event
+    @event = Event.find(params[:event_id])
+  end
+
+  def load_competition
+    @competition = @event.competition
   end
 end

@@ -1,18 +1,8 @@
 <h1>Result</h1>
 
 <p>
-  <b>Competition</b><br>
-  <%= @result.competition_id %>
-</p>
-
-<p>
   <b>User</b><br>
   <%= @result.user_id %>
-</p>
-
-<p>
-  <b>Category</b><br>
-  <%= @result.category %>
 </p>
 
 <p>
@@ -66,7 +56,7 @@
 </p>
 
 <div class="form-actions">
-  <%= link_to 'Back', results_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_result_path(@result), :class => 'btn' %>
-  <%= link_to 'Delete', result_path(@result), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to 'Back', event_results_path(@event), :class => 'btn'  %>
+  <%= link_to 'Edit', edit_event_result_path(@event, @result), :class => 'btn' %>
+  <%= link_to 'Delete', event_result_path(@event, @result), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
