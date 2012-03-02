@@ -4,6 +4,9 @@ class Result < ActiveRecord::Base
 
   before_validation :calculate_best_worst_and_average
 
+  scope :by_round, lambda { |round| where(:round => round || 1) }
+  scope :by_group, lambda { |group| where(:group => group || 1) }
+
   private
 
   def calculate_best_worst_and_average

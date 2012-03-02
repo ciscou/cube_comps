@@ -5,7 +5,7 @@ class ResultsController < ApplicationController
   respond_to :html
 
   def index
-    @results = @event.results.all
+    @results = @event.results.by_round(params[:round]).by_group(params[:group])
   end
 
   def show
