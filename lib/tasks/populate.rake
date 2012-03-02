@@ -11,7 +11,12 @@ namespace :db do
         Factory :entry, :competition => competition, :user => user if rand < 0.5
       end
       competition.categories.each do |category|
-        Factory :event, :competition => competition, :category_code => category.code if competition.start_on.to_datetime.past?
+        if competition.start_on.to_datetime.past?
+          event = Factory :event, :competition => competition, :category_code => category.code
+          event.results.each do |result|
+            result.update_attributes! Factory.attributes_for(:result)
+          end
+        end
       end
     end
   end
