@@ -2,14 +2,14 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Event</legend>
 
-    <%= f.hidden_field :category_code %>
-
     <div class="control-group">
       <%= f.label :rounds_count, :class => 'control-label' %>
       <div class="controls">
         <%= f.number_field :rounds_count, :class => 'number_field' %>
       </div>
     </div>
+
+    <%= f.hidden_field :category_code %>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
