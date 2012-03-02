@@ -1,0 +1,16 @@
+<%= form_tag event_rounds_path(@event), :method => :post, :html => { :class => 'form-horizontal' } do %>
+  <fieldset>
+    <legend>New Round</legend>
+
+    <div class="control-group">
+      <%= label_tag :groups_count, nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= number_field_tag :groups_count, nil, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', @competition, :class => 'btn' %>
+    </div>
+<% end %>

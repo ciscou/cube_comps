@@ -1,7 +1,7 @@
 class Round
   def initialize(event, number)
     @event, @number = event, number
-    @groups_count = @event.results.by_round(@number).maximum(:group)
+    @groups_count = @event.results.by_round(@number).maximum(:group) || 1
   end
 
   def save!

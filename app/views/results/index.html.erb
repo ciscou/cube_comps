@@ -1,44 +1,7 @@
 <h1><%= @event.category.name %> results, <%= @round.name %></h1>
 
-<ul class="nav nav-tabs">
-  <% @round.groups.each do |group| %>
-    <li <% if @group.number == group.number %>class="active"<% end %>>
-      <%= link_to group.name, :round => @round.number, :group => group.number %>
-    </li>
-  <% end %>
-</ul>
-
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Competitor</th>
-      <th>Time #1</th>
-      <th>Time #2</th>
-      <th>Time #3</th>
-      <th>Time #4</th>
-      <th>Time #5</th>
-      <th>Best</th>
-      <th>Worst</th>
-      <th>Average</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @results.each do |result| %>
-      <tr>
-        <td><%= result.user.email %></td>
-        <td class="time"><%= format_time result.time1 %></td>
-        <td class="time"><%= format_time result.time2 %></td>
-        <td class="time"><%= format_time result.time3 %></td>
-        <td class="time"><%= format_time result.time4 %></td>
-        <td class="time"><%= format_time result.time5 %></td>
-        <td class="time"><%= format_time result.best %></td>
-        <td class="time"><%= format_time result.worst %></td>
-        <td class="time"><%= format_time result.average %></td>
-        <td>
-          <%= link_to 'Edit', edit_event_result_path(@event, result), :class => 'btn btn-mini' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @results.any? %>
+  <%= render "results/results" %>
+<% else %>
+  <%= link_to "Start this round", new_event_round_path(@event) %>
+<% end %>
