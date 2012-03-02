@@ -6,8 +6,8 @@ CubeComps::Application.routes.draw do
     resources :events , :only => [:new, :create]
   end
 
-  resources :events do
-    resources :results
+  resources :events, :only => [] do
+    resources :results, :only => [:index, :show, :edit, :update]
   end
 
   root :to => "competitions#index"
