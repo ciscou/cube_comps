@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   def create
     @event = @competition.events.create(params[:event])
-    respond_with @competition, @event
+    respond_with @competition, @event, :location => event_results_path(@event)
   end
 
   private
