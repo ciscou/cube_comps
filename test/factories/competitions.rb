@@ -3,7 +3,7 @@ FactoryGirl.define do
     name     { Faker::Lorem.sentence }
     city     { Faker::Address.city }
     address  { Faker::Address.street_address }
-    start_on { 60.days.ago.to_date + rand(30).days }
+    start_on { 30.days.ago.to_date + rand(60).days }
     end_on   { start_on + rand(3).days }
 
     has_category_333    { true }
