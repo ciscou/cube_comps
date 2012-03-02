@@ -17,7 +17,7 @@ class ResultsController < ApplicationController
   def update
     @result = @event.results.find(params[:id])
     @result.update_attributes(params[:result])
-    respond_with @event, @result, :location => event_results_url(@event)
+    respond_with @event, @result, :location => event_results_url(@event, :round => @result.round, :group => @result.group)
   end
 
   private
