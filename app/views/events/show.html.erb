@@ -1,23 +1,18 @@
 <h1>Event</h1>
 
 <p>
-  <b>Competition</b><br>
-  <%= @event.competition_id %>
+  <b>Category</b><br>
+  <%= @event.category.name %>
 </p>
 
 <p>
-  <b>Category code</b><br>
-  <%= @event.category_code %>
+  <b>Results</b><br>
 </p>
-
-<p>
-  <b>Rounds count</b><br>
-  <%= @event.rounds_count %>
-</p>
-
-<p>
-  <%= link_to "See results", event_results_path(@event) %>
-</p>
+<ul>
+  <% @event.rounds_count.times do |round| %>
+    <li><%= link_to "Round ##{round + 1}", event_results_path(@event, :round => round + 1) %></li>
+  <% end %>
+</ul>
 
 <div class="form-actions">
   <%= link_to 'Back', competition_events_path(@competition), :class => 'btn'  %>

@@ -5,6 +5,8 @@ class Event < ActiveRecord::Base
 
   after_create :create_results_for_first_round!
 
+  composed_of :category, :mapping => %w(category_code code)
+
   private
 
   def create_results_for_first_round!
