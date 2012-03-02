@@ -13,8 +13,8 @@
       <% current_competition.categories.each do |c| %>
         <li class="nav-header"><%= c.name %></li>
         <% if event = current_competition.events.find_by_category_code(c.code) %>
-          <% event.rounds_count.times do |round| %>
-            <li><%= link_to "Round ##{round + 1}", event_results_path(event, :round => round + 1) %></li>
+          <% event.rounds.each do |round| %>
+            <li><%= link_to round.name, event_results_path(event, :round => round.number) %></li>
           <% end %>
         <% else %>
           <li><%= link_to "Start this event", new_competition_event_path(current_competition, :category => c.code) %></li>

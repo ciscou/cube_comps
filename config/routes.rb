@@ -7,6 +7,7 @@ CubeComps::Application.routes.draw do
   end
 
   resources :events, :only => [] do
+    resources :groups , :only => [:new, :create]
     resources :results, :only => [:index, :edit, :update]
   end
 

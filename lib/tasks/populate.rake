@@ -12,7 +12,16 @@ namespace :db do
       end
       competition.categories.each do |category|
         if competition.start_on.to_datetime.past?
-          event = Factory :event, :competition => competition, :category_code => category.code
+          entries_count = competition.entries.with_category(category.code).count
+          rounds_count = if entries_count > 80 then 3
+                      elsif entries_count > 50 then 2
+                       else                         1
+                        end
+          event = Factory :event, :competition => competition, :category_code => category.code, :rounds_count => rounds_count
+          event.rounds.each do |round|
+            round.groups_count = rounds_count # Not everybody should pass to the next round...
+            round.save!
+          end
           event.results.each do |result|
             result.update_attributes! Factory.attributes_for(:result)
           end

@@ -3,17 +3,19 @@ class Event < ActiveRecord::Base
 
   has_many :results
 
-  after_create :create_results_for_first_round!
-
   composed_of :category, :mapping => %w(category_code code)
 
-  private
-
-  def create_results_for_first_round!
-    competition.entries.with_category(category_code).each do |entry|
-      results.create! :user_id => entry.user_id,
-                      :round   => 1,
-                      :group   => 1
+  def rounds
+    (1..rounds_count).map do |round_number|
+      Round.new(self, round_number)
     end
+  end
+
+  def create_results_for_round!(round_number, groups_count)
+     competition.entries.with_category(category_code).each_with_index do |entry, idx|
+       results.create! :user_id => entry.user_id,
+                       :round   => round_number,
+                       :group   => idx.modulo(groups_count) + 1
+     end
   end
 end
