@@ -13,8 +13,8 @@ namespace :db do
       competition.categories.each do |category|
         if competition.start_on.to_datetime.past?
           entries_count = competition.entries.with_category(category.code).count
-          rounds_count = if entries_count > 80 then 3
-                      elsif entries_count > 50 then 2
+          rounds_count = if entries_count > 50 then 3
+                      elsif entries_count > 30 then 2
                        else                         1
                         end
           event = Factory :event, :competition => competition, :category_code => category.code, :rounds_count => rounds_count

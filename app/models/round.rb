@@ -8,15 +8,21 @@ class Round
     @event.create_results_for_round! @number, @groups_count
   end
 
+  def groups
+    (1..@groups_count).map do |group|
+      Group.new(self, group)
+    end
+  end
+
   attr_accessor :groups_count
 
   attr_reader :number
 
   def name
     if @number == @event.rounds_count
-      "Final"
+      "final"
     else
-      "Round #{@number}"
+      "round #{@number}"
     end
   end
 end

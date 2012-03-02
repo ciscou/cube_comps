@@ -1,9 +1,9 @@
 <h1><%= @event.category.name %> results, <%= @round.name %></h1>
 
 <ul class="nav nav-tabs">
-  <% (1..@round.groups_count).each do |group| %>
-    <li <% if @group == group %>class="active"<% end %>>
-      <%= link_to "Group #{group}", :round => @round.number, :group => group %>
+  <% @round.groups.each do |group| %>
+    <li <% if @group.number == group.number %>class="active"<% end %>>
+      <%= link_to group.name, :round => @round.number, :group => group.number %>
     </li>
   <% end %>
 </ul>
