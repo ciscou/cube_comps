@@ -16,7 +16,7 @@ class ResultsController < ApplicationController
   # GET /results/1
   # GET /results/1.json
   def show
-    @result = Result.find(params[:id])
+    @result = @event.results.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,7 @@ class ResultsController < ApplicationController
   # GET /results/new
   # GET /results/new.json
   def new
-    @result = Result.new
+    @result = @event.results.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,13 +37,13 @@ class ResultsController < ApplicationController
 
   # GET /results/1/edit
   def edit
-    @result = Result.find(params[:id])
+    @result = @event.results.find(params[:id])
   end
 
   # POST /results
   # POST /results.json
   def create
-    @result = Result.new(params[:result])
+    @result = @event.results.new(params[:result])
 
     respond_to do |format|
       if @result.save
@@ -59,7 +59,7 @@ class ResultsController < ApplicationController
   # PUT /results/1
   # PUT /results/1.json
   def update
-    @result = Result.find(params[:id])
+    @result = @event.results.find(params[:id])
 
     respond_to do |format|
       if @result.update_attributes(params[:result])
@@ -75,7 +75,7 @@ class ResultsController < ApplicationController
   # DELETE /results/1
   # DELETE /results/1.json
   def destroy
-    @result = Result.find(params[:id])
+    @result = @event.results.find(params[:id])
     @result.destroy
 
     respond_to do |format|
