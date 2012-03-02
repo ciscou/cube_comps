@@ -27,6 +27,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = @competition.events.new
+    @event.category_code = params[:category]
 
     respond_to do |format|
       format.html # new.html.erb

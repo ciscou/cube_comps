@@ -2,19 +2,7 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Event</legend>
 
-    <div class="control-group">
-      <%= f.label :competition_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.number_field :competition_id, :class => 'number_field' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :category_code, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :category_code, :class => 'text_field' %>
-      </div>
-    </div>
+    <%= f.hidden_field :category_code %>
 
     <div class="control-group">
       <%= f.label :rounds_count, :class => 'control-label' %>

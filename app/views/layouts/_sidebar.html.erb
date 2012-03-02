@@ -17,7 +17,7 @@
             <li><%= link_to "Round ##{round + 1}", competition_event_path(@competition, event, :round => round + 1) %></li>
           <% end %>
         <% else %>
-          <li><%= link_to "Start this event", new_competition_event_path(@competition) %></li>
+          <li><%= link_to "Start this event", new_competition_event_path(@competition, :category => c.code) %></li>
         <% end %>
       <% end %>
     </ul>
