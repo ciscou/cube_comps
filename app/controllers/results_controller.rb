@@ -5,11 +5,9 @@ class ResultsController < ApplicationController
   respond_to :html
 
   def index
-    @results = @event.results.by_round(params[:round]).by_group(params[:group])
-  end
-
-  def show
-    @result = @event.results.find(params[:id])
+    @round = params[:round] || 1
+    @group = params[:group] || 1
+    @results = @event.results.by_round(@round).by_group(@group)
   end
 
   def edit
@@ -19,7 +17,7 @@ class ResultsController < ApplicationController
   def update
     @result = @event.results.find(params[:id])
     @result.update_attributes(params[:result])
-    respond_with @event, @result
+    respond_with @event, @result, :location => event_results_url(@event)
   end
 
   private
