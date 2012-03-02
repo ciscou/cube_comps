@@ -6,4 +6,16 @@
       <li><%= link_to "Link2", "/path2"  %></li>
       <li><%= link_to "Link3", "/path3"  %></li>
   </ul>
+
+  <% if @competition %>
+    <h3><%= @competition.name %> results</h3>
+    <ul class="nav nav-list">
+      <% @competition.events.each do |e| %>
+        <li class="nav-header"><%= e.name %></li>
+        <li><%= link_to "First round", "/path1"  %></li>
+        <li><%= link_to "Second round", "/path2"  %></li>
+        <li><%= link_to "Final", "/path3"  %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

@@ -5,7 +5,7 @@
     <div class="control-group">
       <%= f.label "has_events", "Events", :class => 'control-label' %>
       <div class="controls">
-        <% Event.all.each do |event| %>
+        <% @competition.events.each do |event| %>
           <%= f.label "has_event_#{event.code}", :class => 'checkbox' do %>
             <%= f.check_box "has_event_#{event.code}", :class => 'check_box' %>
             <%= event.name %>
