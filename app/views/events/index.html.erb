@@ -1,0 +1,26 @@
+<h1>Events</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Competition</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.id %></td>
+        <td><%= link_to event.competition_id, competition_event_path(@competition, event) %></td>
+        <td><%= event.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_competition_event_path(@competition, event), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', competition_event_path(@competition, event), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_competition_event_path(@competition), :class => 'btn btn-primary' %>

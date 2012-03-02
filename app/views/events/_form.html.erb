@@ -1,0 +1,31 @@
+<%= form_for [@competition, @event], :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Event</legend>
+
+    <div class="control-group">
+      <%= f.label :competition_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :competition_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :category_code, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :category_code, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :rounds_count, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :rounds_count, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', competition_events_path(@competition), :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

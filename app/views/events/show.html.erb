@@ -1,0 +1,22 @@
+<h1>Event</h1>
+
+<p>
+  <b>Competition</b><br>
+  <%= @event.competition_id %>
+</p>
+
+<p>
+  <b>Category code</b><br>
+  <%= @event.category_code %>
+</p>
+
+<p>
+  <b>Rounds count</b><br>
+  <%= @event.rounds_count %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', competition_events_path(@competition), :class => 'btn'  %>
+  <%= link_to 'Edit', edit_competition_event_path(@competition, @event), :class => 'btn' %>
+  <%= link_to 'Delete', competition_event_path(@competition, @event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

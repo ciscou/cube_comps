@@ -12,9 +12,13 @@
     <ul class="nav nav-list">
       <% @competition.categories.each do |c| %>
         <li class="nav-header"><%= c.name %></li>
-        <li><%= link_to "First round", "/path1"  %></li>
-        <li><%= link_to "Second round", "/path2"  %></li>
-        <li><%= link_to "Final", "/path3"  %></li>
+        <% if event = @competition.events.find_by_category_code(c.code) %>
+          <% event.rounds_count.times do |round| %>
+            <li><%= link_to "Round ##{round + 1}", competition_event_path(@competition, event, :round => round + 1) %></li>
+          <% end %>
+        <% else %>
+          <li><%= link_to "Start this event", new_competition_event_path(@competition) %></li>
+        <% end %>
       <% end %>
     </ul>
   <% end %>
