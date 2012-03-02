@@ -3,5 +3,5 @@
 <% if @results.any? %>
   <%= render "results/results" %>
 <% else %>
-  <%= link_to "Start this round", new_event_round_path(@event) %>
+  <%= link_to "Start this round", edit_event_round_path(@event, @round.number) %>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_tag event_rounds_path(@event), :method => :post, :html => { :class => 'form-horizontal' } do %>
+<%= form_tag event_round_path(@event, @round.number), :method => :put, :html => { :class => 'form-horizontal' } do %>
   <fieldset>
     <legend>New Round</legend>
 

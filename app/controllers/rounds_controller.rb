@@ -2,11 +2,11 @@ class RoundsController < ApplicationController
   before_filter :load_event
   before_filter :load_competition
 
-  def new
+  def edit
     @round = @event.rounds.at(params[:id].to_i - 1)
   end
 
-  def create
+  def update
     @round = @event.rounds.at(params[:id].to_i - 1)
     @round.groups_count = params[:groups_count].to_i
     @round.save!

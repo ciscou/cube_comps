@@ -7,7 +7,7 @@ CubeComps::Application.routes.draw do
   end
 
   resources :events, :only => [] do
-    resources :rounds , :only => [:new, :create]
+    resources :rounds , :only => [:edit, :update]
     resources :results, :only => [:index, :edit, :update]
   end
 
