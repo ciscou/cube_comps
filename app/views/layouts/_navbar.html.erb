@@ -10,16 +10,24 @@
       <div class="container nav-collapse">
         <% if @competition %>
           <ul class="nav">
-            <li><%= link_to @competition.name, @competition %></li>
+            <li class="active"><%= link_to @competition.name, @competition %></li>
           </ul>
         <% end %>
-        <ul class="nav pull-right">
-          <% if user_signed_in? %>
+
+        <% if user_signed_in? %>
+          <ul class="nav pull-right">
             <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-          <% else %>
+          </ul>
+          <p class="navbar-text pull-right">
+            Welcome, <%= current_user.email %>
+          </p>
+        <% else %>
+          <ul class="nav pull-right">
             <li><%= link_to "Login" , new_user_session_path %></li>
-          <% end %>
-        </ul>
+            <li class="divider-vertical"></li>
+            <li><%= link_to "Register" , new_user_registration_path %></li>
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>
