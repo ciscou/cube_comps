@@ -19,7 +19,8 @@ namespace :db do
                         end
           event = Factory :event, :competition => competition, :category_code => category.code, :rounds_count => rounds_count
           event.rounds.each do |round|
-            round.groups_count = rounds_count # Not everybody should pass to the next round...
+            round.groups_count = [1, rounds_count - round.number].max
+            round.entries_count = [200, 24, 12].at(round.number - 1)
             round.save!
           end
           event.results.each do |result|

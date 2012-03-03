@@ -9,6 +9,15 @@
       </div>
     </div>
 
+    <% unless @round.number == 1 %>
+      <div class="control-group">
+        <%= label_tag :entries_count, nil, :class => 'control-label' %>
+        <div class="controls">
+          <%= number_field_tag :entries_count, nil, :class => 'number_field' %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="form-actions">
       <%= submit_tag nil, :class => 'btn btn-primary' %>
       <%= link_to 'Cancel', @competition, :class => 'btn' %>

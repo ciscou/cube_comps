@@ -7,6 +7,8 @@ class Result < ActiveRecord::Base
   scope :by_round, lambda { |round| where(:round => round || 1) }
   scope :by_group, lambda { |group| where(:group => group || 1) }
 
+  scope :winners, order(:average, :best)
+
   private
 
   def calculate_best_worst_and_average

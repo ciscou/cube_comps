@@ -5,7 +5,7 @@ class Round
   end
 
   def save!
-    @event.create_results_for_round! @number, @groups_count
+    @event.create_results_for_round! @number, @groups_count, @entries_count
   end
 
   def groups
@@ -15,6 +15,7 @@ class Round
   end
 
   attr_accessor :groups_count
+  attr_accessor :entries_count
 
   attr_reader :number
 
