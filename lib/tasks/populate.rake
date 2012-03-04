@@ -27,9 +27,9 @@ namespace :db do
             round.groups_count = [1, rounds_count - round.number + 1].max
             round.entries_count = [200, 24, 12].at(round.number - 1)
             round.save!
-          end
-          event.results.each do |result|
-            result.update_attributes! Factory.attributes_for(:result)
+            event.results.by_round(round.number).each do |result|
+              result.update_attributes! Factory.attributes_for(:result)
+            end
           end
         end
       end
