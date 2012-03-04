@@ -1,6 +1,11 @@
 namespace :db do
   desc "Create some test data"
   task :populate => :environment do
+    if Rails.env.production?
+      FactoryGirl.definition_file_paths << Rails.root.join('test/factories')
+      FactoryGirl.find_definitions
+    end
+
     user = Factory :user, :email => "user@cubecomps.com"
     99.times { Factory :user }
 
