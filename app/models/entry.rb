@@ -1,4 +1,6 @@
 class Entry < ActiveRecord::Base
+  include Categorizable
+
   belongs_to :user
   belongs_to :competition
 

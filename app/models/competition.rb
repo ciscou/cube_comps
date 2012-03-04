@@ -1,4 +1,6 @@
 class Competition < ActiveRecord::Base
+  include Categorizable
+
   belongs_to :user
 
   has_many :entries
@@ -8,11 +10,5 @@ class Competition < ActiveRecord::Base
 
   def categories
     Category.all.select { |c| has_category? c }
-  end
-
-  private
-
-  def has_category?(category)
-    send("has_category_#{category.respond_to?(:code) ? category.code : category}?")
   end
 end

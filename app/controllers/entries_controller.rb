@@ -4,6 +4,10 @@ class EntriesController < ApplicationController
 
   respond_to :html
 
+  def index
+    @entries = @competition.entries.includes(:user)
+  end
+
   def new
     @entry = current_user.entries.new(:competition => @competition)
   end
