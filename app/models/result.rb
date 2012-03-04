@@ -7,7 +7,7 @@ class Result < ActiveRecord::Base
   scope :by_round, lambda { |round| where(:round => round || 1) }
   scope :by_group, lambda { |group| where(:group => group || 1) }
 
-  scope :winners, order(:average, :best)
+  scope :winners, where("average IS NOT NULL").order(:average, :best)
 
   private
 
