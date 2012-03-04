@@ -9,6 +9,7 @@ class RoundsController < ApplicationController
   def update
     @round = @event.rounds.at(params[:id].to_i - 1)
     @round.groups_count = params[:groups_count].to_i
+    @round.entries_count = params[:entries_count].to_i
     @round.save!
     redirect_to event_results_url(@event, :round => @round.number)
   end
