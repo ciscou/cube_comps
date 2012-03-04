@@ -7,7 +7,7 @@ class ResultsController < ApplicationController
   def index
     @round = @event.rounds.at((params[:round] || 1).to_i - 1)
     @group = @round.groups.at((params[:group] || 1).to_i - 1)
-    @results = @event.results.by_round(@round.number).by_group(@group.number)
+    @results = @event.results.by_round(@round.number).by_group(@group.number).includes(:user)
   end
 
   def edit
