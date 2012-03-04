@@ -8,10 +8,8 @@ gem 'rails', '3.2.2'
 gem 'pg'
 gem 'devise'
 
-group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'ffaker'
-end
+gem 'factory_girl_rails'
+gem 'ffaker'
 
 # Gems used only for assets and not required
 # in production environments by default.
