@@ -10,8 +10,8 @@
       <div class="container nav-collapse">
         <% if current_competition %>
           <ul class="nav">
-            <li class="active"><%= link_to current_competition.name, current_competition %></li>
-            <li class="active"><%= link_to "Competitors", competition_entries_path(current_competition) %></li>
+            <li class="<%= "active" if current_page?("competitions", "show") %>"><%= link_to current_competition.name, current_competition %></li>
+            <li class="<%= "active" if current_page?("entries", "index") %>"><%= link_to "Competitors", competition_entries_path(current_competition) %></li>
           </ul>
         <% end %>
 

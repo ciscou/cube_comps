@@ -5,6 +5,12 @@ module ApplicationHelper
     end.join.html_safe
   end
 
+  def current_page?(controller, action = nil)
+    actions = Array(action)
+    controller == params[:controller] &&
+    actions.include?(action)
+  end
+
   private
 
   def div_class_for_flash_type(flash_type)
